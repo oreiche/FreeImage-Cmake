@@ -567,6 +567,10 @@ IF(MSVC)
   add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 ENDIF()
 
+if(CMAKE_C_COMPILER_ID STREQUAL "AppleClang")
+  add_compile_options(-Wno-error=implicit-function-declaration)
+endif()
+
 if (${FREEIMAGE_LIB})
     add_library(FreeImage STATIC ${ALL_SRC})
 else()
